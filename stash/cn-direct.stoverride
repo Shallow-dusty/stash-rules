@@ -1,0 +1,34 @@
+name: 国内直连 · 海外默认
+desc: 国内域名、国内 IP 和局域网直连；其余流量继续使用现有 Mihomo 配置
+author: Shallow-dusty
+homepage: https://github.com/Shallow-dusty/stash-rules
+category: Routing
+
+rule-providers:
+  personal-cn-domain:
+    behavior: domain
+    format: yaml
+    url: https://raw.githubusercontent.com/Shallow-dusty/stash-rules/main/rules/cn-direct-domain.yaml
+    interval: 3600
+    path: ./rules/personal-cn-domain.yaml
+
+rules:
+  # Localhost and private networks
+  - DOMAIN,localhost,DIRECT
+  - DOMAIN-SUFFIX,local,DIRECT
+  - IP-CIDR,127.0.0.0/8,DIRECT,no-resolve
+  - IP-CIDR,10.0.0.0/8,DIRECT,no-resolve
+  - IP-CIDR,100.64.0.0/10,DIRECT,no-resolve
+  - IP-CIDR,169.254.0.0/16,DIRECT,no-resolve
+  - IP-CIDR,172.16.0.0/12,DIRECT,no-resolve
+  - IP-CIDR,192.168.0.0/16,DIRECT,no-resolve
+  - IP-CIDR,224.0.0.0/4,DIRECT,no-resolve
+  - IP-CIDR6,::1/128,DIRECT,no-resolve
+  - IP-CIDR6,fc00::/7,DIRECT,no-resolve
+  - IP-CIDR6,fe80::/10,DIRECT,no-resolve
+
+  # Personal mainland China domain set, followed by the built-in CN IP database
+  - RULE-SET,personal-cn-domain,DIRECT
+  - GEOIP,CN,DIRECT
+
+  # No MATCH rule here: unmatched traffic continues through the Mihomo config.

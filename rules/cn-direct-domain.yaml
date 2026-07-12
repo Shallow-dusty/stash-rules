@@ -1,0 +1,36 @@
+payload:
+  # Mainland China namespace
+  - '+.cn'
+
+  # Tencent and WeChat
+  - '+.qq.com'
+  - '+.qpic.cn'
+  - '+.gtimg.com'
+  - '+.weixin.qq.com'
+  - '+.wechat.com'
+
+  # Alibaba and Ant
+  - '+.alibaba.com'
+  - '+.alicdn.com'
+  - '+.aliyuncs.com'
+  - '+.alipay.com'
+  - '+.taobao.com'
+  - '+.tmall.com'
+
+  # Common mainland services
+  - '+.jd.com'
+  - '+.bilibili.com'
+  - '+.bilivideo.com'
+  - '+.douyin.com'
+  - '+.byteimg.com'
+  - '+.baidu.com'
+  - '+.bdstatic.com'
+  - '+.zhihu.com'
+  - '+.meituan.com'
+  - '+.dianping.com'
+  - '+.amap.com'
+  - '+.autonavi.com'
+  - '+.mi.com'
+  - '+.xiaomi.com'
+  - '+.163.com'
+  - '+.126.com'
