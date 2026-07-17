@@ -1,5 +1,5 @@
-name: 国内直连 · 海外默认
-desc: 国内域名、国内 IP 和局域网直连；其余流量继续使用现有 Mihomo 配置
+name: 本地与国内直连 · 海外默认
+desc: 本地网络、国内域名和国内 IP 直连；Tailscale 地址留给独立覆写；其余流量继续使用现有 Mihomo 配置
 author: Shallow-dusty
 homepage: https://github.com/Shallow-dusty/stash-rules
 category: Routing
@@ -18,14 +18,15 @@ rules:
   - DOMAIN-SUFFIX,local,DIRECT
   - IP-CIDR,127.0.0.0/8,DIRECT,no-resolve
   - IP-CIDR,10.0.0.0/8,DIRECT,no-resolve
-  - IP-CIDR,100.64.0.0/10,DIRECT,no-resolve
   - IP-CIDR,169.254.0.0/16,DIRECT,no-resolve
   - IP-CIDR,172.16.0.0/12,DIRECT,no-resolve
   - IP-CIDR,192.168.0.0/16,DIRECT,no-resolve
   - IP-CIDR,224.0.0.0/4,DIRECT,no-resolve
   - IP-CIDR6,::1/128,DIRECT,no-resolve
-  - IP-CIDR6,fc00::/7,DIRECT,no-resolve
+  # Keep ordinary ULA traffic direct, but leave Tailscale's ULA prefix unmatched.
+  - AND,((IP-CIDR6,fc00::/7,no-resolve),(NOT,((IP-CIDR6,fd7a:115c:a1e0::/48,no-resolve)))),DIRECT
   - IP-CIDR6,fe80::/10,DIRECT,no-resolve
+  - IP-CIDR6,ff00::/8,DIRECT,no-resolve
 
   # Personal mainland China domain set, followed by the built-in CN IP database
   - RULE-SET,personal-cn-domain,DIRECT

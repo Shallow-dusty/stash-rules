@@ -10,6 +10,11 @@ Personal Stash rules for an overseas-by-default network environment:
 
 The overrides deliberately contain no `MATCH` rule, subscription URLs, account
 credentials, auth keys, assigned Tailscale IPs, or private MagicDNS suffixes.
+Their routing responsibilities do not overlap:
+
+- `cn-direct.stoverride` deliberately leaves `100.64.0.0/10` and
+  `fd7a:115c:a1e0::/48` unmatched.
+- `tailscale.stoverride` exclusively owns those Tailscale ranges and `*.ts.net`.
 
 ## Install on iOS
 
@@ -21,10 +26,9 @@ To add Tailscale access, install this second override:
 
 <https://link.stash.ws/install-override/raw.githubusercontent.com/Shallow-dusty/stash-rules/main/stash/tailscale.stoverride>
 
-Enable both overrides and keep `Tailscale Access` after
-`国内直连 · 海外默认` in the Stash override list. Stash applies overrides from
-top to bottom and prepends array entries, so the later Tailscale rules take
-priority over the earlier CGNAT and private IPv6 direct rules.
+Enable both overrides and reload the active configuration. They are
+non-overlapping, so their relative order in the Stash override list does not
+affect routing.
 
 Reload the active configuration, long-press the `Tailscale` proxy, open
 `Tailscale Authentication`, and complete interactive authentication once.
