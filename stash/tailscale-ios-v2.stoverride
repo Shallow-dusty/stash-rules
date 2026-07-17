@@ -1,0 +1,18 @@
+name: Tailscale Access for iOS
+desc: Add a persistent Tailscale node with interactive web authentication
+author: Shallow-dusty
+homepage: https://github.com/Shallow-dusty/stash-rules
+category: Routing
+version: '2.0.0'
+
+proxies:
+  - name: Tailscale
+    type: tailscale
+    hostname: stash-ios
+    control-url: https://controlplane.tailscale.com
+    ephemeral: false
+
+rules:
+  - DOMAIN-SUFFIX,ts.net,Tailscale
+  - IP-CIDR,100.64.0.0/10,Tailscale,no-resolve
+  - IP-CIDR6,fd7a:115c:a1e0::/48,Tailscale,no-resolve

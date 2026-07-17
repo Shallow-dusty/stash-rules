@@ -22,9 +22,9 @@ Open this URL on the iPhone or iPad that has Stash installed:
 
 <https://link.stash.ws/install-override/raw.githubusercontent.com/Shallow-dusty/stash-rules/main/stash/cn-direct.stoverride>
 
-To add Tailscale access, install this second override:
+To add Tailscale access on iOS, install this second override:
 
-<https://link.stash.ws/install-override/raw.githubusercontent.com/Shallow-dusty/stash-rules/main/stash/tailscale.stoverride>
+<https://link.stash.ws/install-override/raw.githubusercontent.com/Shallow-dusty/stash-rules/main/stash/tailscale-ios-v2.stoverride>
 
 Enable both overrides and reload the active configuration. They are
 non-overlapping, so their relative order in the Stash override list does not
@@ -36,7 +36,8 @@ Reload the active configuration, long-press the `Tailscale` proxy, open
 ## Files
 
 - `stash/cn-direct.stoverride`: one-time remote override installed in Stash
-- `stash/tailscale.stoverride`: optional Tailscale node and routing override
+- `stash/tailscale-ios-v2.stoverride`: current iOS Tailscale node and routing override
+- `stash/tailscale.stoverride`: legacy minimal Tailscale override retained for compatibility
 - `rules/cn-direct-domain.yaml`: domain rule set updated automatically by Stash
 
 Stash checks the remote domain rule set hourly. To publish changes, edit the
