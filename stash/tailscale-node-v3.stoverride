@@ -1,0 +1,6 @@
+name: Tailscale Node Probe
+desc: Minimal Tailscale node for interactive authentication
+
+proxies:
+  - name: ts-stash-ios
+    type: tailscale
