@@ -1,0 +1,17 @@
+name: Tailscale Access
+desc: Route Tailscale addresses and MagicDNS names through a locally authenticated Tailscale node
+author: Shallow-dusty
+homepage: https://github.com/Shallow-dusty/stash-rules
+category: Routing
+
+proxies:
+  # Authentication is completed locally in Stash; no auth key is stored here.
+  - name: Tailscale
+    type: tailscale
+    ephemeral: false
+
+rules:
+  # Keep this override after cn-direct so these rules take precedence.
+  - DOMAIN-SUFFIX,ts.net,Tailscale
+  - IP-CIDR,100.64.0.0/10,Tailscale,no-resolve
+  - IP-CIDR6,fd7a:115c:a1e0::/48,Tailscale,no-resolve
