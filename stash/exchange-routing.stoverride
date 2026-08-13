@@ -16,9 +16,11 @@ proxy-groups:
     interval: 300
 
 rules:
-  # Bybit 官方域: bybit.com (主站/API/WS) + bybit.net (备用域), SUFFIX 覆盖全部子域
+  # Bybit 官方域: 主站/API/WS + 备用域 (证书验证), SUFFIX 覆盖全部子域
   - DOMAIN-SUFFIX,bybit.com,Bybit-TW
   - DOMAIN-SUFFIX,bybit.net,Bybit-TW
+  - DOMAIN-SUFFIX,bybit.nl,Bybit-TW
+  - DOMAIN-SUFFIX,bybitglobal.com,Bybit-TW
   # Kraken 官方域: kraken.com (主站/API/WS) + krakenfx.com (运营实体域)
   - DOMAIN-SUFFIX,kraken.com,🇬🇧 英国 04 家宽
   - DOMAIN-SUFFIX,krakenfx.com,🇬🇧 英国 04 家宽
