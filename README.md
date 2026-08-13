@@ -22,6 +22,12 @@ Open this URL on the iPhone or iPad that has Stash installed:
 
 <https://link.stash.ws/install-override/raw.githubusercontent.com/Shallow-dusty/stash-rules/main/stash/cn-direct.stoverride>
 
+To route Bybit and Kraken through dedicated residential nodes, install this
+additional override (Bybit: Taiwan residential fallback trio; Kraken: UK
+residential):
+
+<https://link.stash.ws/install-override/raw.githubusercontent.com/Shallow-dusty/stash-rules/main/stash/exchange-routing.stoverride>
+
 To add Tailscale access on iOS, install this second override:
 
 <https://link.stash.ws/install-override/raw.githubusercontent.com/Shallow-dusty/stash-rules/main/stash/tailscale-ios-v2.stoverride>

@@ -1,0 +1,20 @@
+name: 交易所家宽分流
+desc: Bybit 走台湾家宽自动回退组；Kraken 走英国家宽；与 cn-direct / Tailscale 覆写不重叠
+author: Shallow-dusty
+homepage: https://github.com/Shallow-dusty/stash-rules
+category: Routing
+version: '1.0.0'
+
+proxy-groups:
+  - name: Bybit-TW
+    type: fallback
+    proxies:
+      - "🇨🇳 台湾 07 家宽"
+      - "🇨🇳 台湾 08 家宽"
+      - "🇨🇳 台湾 09 家宽"
+    url: "https://www.gstatic.com/generate_204"
+    interval: 300
+
+rules:
+  - DOMAIN-SUFFIX,bybit.com,Bybit-TW
+  - DOMAIN-SUFFIX,kraken.com,🇬🇧 英国 04 家宽
