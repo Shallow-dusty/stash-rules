@@ -1,8 +1,18 @@
 name: 本地与国内直连 · 海外默认
-desc: 本地网络、国内域名和国内 IP 直连；Tailscale 地址留给独立覆写；其余流量继续使用现有 Mihomo 配置
+desc: 本地网络、国内域名和国内 IP 直连；Bybit 走台湾家宽自动回退组、Kraken 走英国家宽；Tailscale 地址留给独立覆写；其余流量继续使用现有 Mihomo 配置
 author: Shallow-dusty
 homepage: https://github.com/Shallow-dusty/stash-rules
 category: Routing
+
+proxy-groups:
+  - name: Bybit-TW
+    type: fallback
+    proxies:
+      - "🇨🇳 台湾 07 家宽"
+      - "🇨🇳 台湾 08 家宽"
+      - "🇨🇳 台湾 09 家宽"
+    url: "https://www.gstatic.com/generate_204"
+    interval: 300
 
 rule-providers:
   personal-cn-domain:
@@ -31,5 +41,14 @@ rules:
   # Personal mainland China domain set, followed by the built-in CN IP database
   - RULE-SET,personal-cn-domain,DIRECT
   - GEOIP,CN,DIRECT
+
+  # Bybit official domains: main/API/WS + backup domains (cert-verified), SUFFIX covers all subdomains
+  - DOMAIN-SUFFIX,bybit.com,Bybit-TW
+  - DOMAIN-SUFFIX,bybit.net,Bybit-TW
+  - DOMAIN-SUFFIX,bybit.nl,Bybit-TW
+  - DOMAIN-SUFFIX,bybitglobal.com,Bybit-TW
+  # Kraken official domains: kraken.com (main/API/WS) + krakenfx.com (operating entity)
+  - DOMAIN-SUFFIX,kraken.com,🇬🇧 英国 04 家宽
+  - DOMAIN-SUFFIX,krakenfx.com,🇬🇧 英国 04 家宽
 
   # No MATCH rule here: unmatched traffic continues through the Mihomo config.
