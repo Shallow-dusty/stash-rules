@@ -50,5 +50,7 @@ rules:
   # Kraken official domains: kraken.com (main/API/WS) + krakenfx.com (operating entity)
   - DOMAIN-SUFFIX,kraken.com,🇬🇧 英国 04 家宽
   - DOMAIN-SUFFIX,krakenfx.com,🇬🇧 英国 04 家宽
+  # Krak app (krak.app): official global money app domain, covers all subdomains
+  - DOMAIN-SUFFIX,krak.app,🇬🇧 英国 04 家宽
 
   # No MATCH rule here: unmatched traffic continues through the Mihomo config.
