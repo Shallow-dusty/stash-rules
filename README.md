@@ -22,7 +22,7 @@ Open this URL on the iPhone or iPad that has Stash installed:
 
 <https://link.stash.ws/install-override/raw.githubusercontent.com/Shallow-dusty/stash-rules/main/stash/cn-direct.stoverride>
 
-Bybit (Taiwan residential fallback trio) and Kraken (UK residential) routing is
+Bybit + Binance (Taiwan residential fallback trio) and Kraken (UK residential) routing is
 merged into `cn-direct.stoverride` — no extra install needed;
 refresh the existing override to pick it up.
 
