@@ -1,5 +1,5 @@
 name: 本地与国内直连 · 海外默认
-desc: 本地网络、国内域名和国内 IP 直连；Bybit 与币安走台湾家宽自动回退组、Kraken 走英国家宽；Tailscale 地址留给独立覆写；其余流量继续使用现有 Mihomo 配置
+desc: 本地网络、国内域名和国内 IP 直连；Bybit 与币安走台湾家宽自动回退组、Kraken 走海妖UK池（需配合 secret gist 覆写 own-nodes 提供组与节点）；Tailscale 地址留给独立覆写；其余流量继续使用现有 Mihomo 配置
 author: Shallow-dusty
 homepage: https://github.com/Shallow-dusty/stash-rules
 category: Routing
@@ -50,10 +50,11 @@ rules:
   # Binance official domains: main/API (same Taiwan residential trio as Bybit, per user spec 2026-08-16)
   - DOMAIN-SUFFIX,binance.com,Bybit-TW
   - DOMAIN-SUFFIX,binancezh.com,Bybit-TW
-  # Kraken official domains: kraken.com (main/API/WS) + krakenfx.com (operating entity)
-  - DOMAIN-SUFFIX,kraken.com,🇬🇧 英国 04 家宽
-  - DOMAIN-SUFFIX,krakenfx.com,🇬🇧 英国 04 家宽
+  # Kraken official domains → 海妖UK 组（自建UK主力 → MESL英国04兜底，组定义在 secret gist 覆写 own-nodes）
+  # 2026-08-19: 原直指英国04家宽，但 MESL drive-cl 欧洲入口不稳致断连；改为 fallback 池且主力换自建
+  - DOMAIN-SUFFIX,kraken.com,海妖UK
+  - DOMAIN-SUFFIX,krakenfx.com,海妖UK
   # Krak app (krak.app): official global money app domain, covers all subdomains
-  - DOMAIN-SUFFIX,krak.app,🇬🇧 英国 04 家宽
+  - DOMAIN-SUFFIX,krak.app,海妖UK
 
   # No MATCH rule here: unmatched traffic continues through the Mihomo config.
